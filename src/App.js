@@ -1,9 +1,10 @@
-import s from './App.scss';
+import './App.scss';
+import Header from './Components/Header/Header';
 
 function App() {
   return (
-    <div className={s.App}>
-      ShopLA
+    <div className='App'>
+      <Header/>
     </div>
   );
 }

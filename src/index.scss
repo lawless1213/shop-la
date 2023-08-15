@@ -1,1 +1,81 @@
 @use 'scss-reset/reset';
+@import './_vars';
+
+//Colors
+:root {
+	--color-white: #fff;
+
+	--color-primary: #151515;
+	--color-primary-b: #575757;
+	--color-primar-c: #A9A9A9;
+	--color-primary-d: #D1D1D1;
+	--color-primary-e: #EBEBEB;
+	--color-primary-f: #F5F5F5;
+	--color-primary-h: #F9F9F9;
+
+	--color-secondary: #6A983C;
+	--color-secondary-b: #46760A;
+	--color-secondary-c: #92C064;
+	--color-secondary-d: #C8DEB3;
+	--color-secondary-e: #F4F8EC;
+
+	--color-add-1: #D0A866;
+	--color-add-1-b: #B28A48;
+	--color-add-1-c: #ECD2A6;
+	--color-add-1-d: #FAEDD8;
+	--color-add-1-e: #FFF9F0;
+
+	--color-add-2: #E5704B;
+	--color-add-2-b: #C7522D;
+	--color-add-2-c: #EB8D70;
+	--color-add-2-d: #F7C6B7;
+	--color-add-2-e: #FFF1ED;
+
+	--color-add-3: #37D0D6;
+	--color-add-3-b: #19B2B8;
+	--color-add-3-c: #7CD0D3;
+	--color-add-3-d: #B9E6E8;
+	--color-add-3-e: #ECF6F6;
+}
+//------------
+
+//Fonts
+$fonts: (
+  s1: (fs: 32px, fw: 600, ff: 'Poppins'),
+  s2: (fs: 26px, fw: 600, ff: 'Poppins'),
+  s3: (fs: 22px, fw: 600, ff: 'Poppins'),
+  s4: (fs: 18px, fw: 600, ff: 'Poppins'),
+  s5: (fs: 15px, fw: 600, ff: 'Poppins'),
+  s6: (fs: 12px, fw: 600, ff: 'Poppins'),
+  button: (fs: 15px, fw: 700, ff: 'Poppins'),
+  lead: (fs: 17px, fw: 400, ff: 'Open Sans'),
+  body: (fs: 14px, fw: 400, ff: 'Open Sans'),
+  caption: (fs: 12px, fw: 400, ff: 'Open Sans'),
+);
+
+@each $font, $keys in $fonts {
+  .f-#{$font} {
+    font-size: map-get($keys, fs);
+		font-weight: map-get($keys, fw);
+		font-family: map-get($keys, ff), sans-serif;
+  }
+}
+//------------
+
+//Links
+.myLink {
+	color: var(--color-secondary);
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	text-decoration: none;
+
+	&.dark {
+		color: var(--color-primary);
+	}
+}
+//------------
+
+
+body {
+	background: var(--color-primary-h);
+}

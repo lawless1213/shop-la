@@ -1,0 +1,30 @@
+.Header {
+	.top {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 48px;
+
+		.links {
+			display: flex;
+			align-items: center;
+			gap: 30px;
+		}
+	}
+
+	.main {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 130px;
+	}
+
+	.nav {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		height: 55px;
+		gap: 40px;
+	}
+}
