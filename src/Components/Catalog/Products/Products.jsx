@@ -5,28 +5,34 @@ import getApiData from '../../../data/api';
 import { useEffect, useState } from 'react';
 import Preloader from '../../UI/Preloader/Preloader';
 import ProductItemDefault from '../../Product/ProductItemDefault/ProductItemDefault';
+import { useParams } from 'react-router-dom';
 
 const Products = () => {
 	let products = useSelector(state => state.products.items);
 	let total = useSelector(state => state.products.total);
 	let dispatch = useDispatch();
+	let {category} = useParams();
+
+	let selectedCategory = category ? category === 'all' ? '' : `/category/${category}` : '';
 
 	let [loaded, setLoaded] = useState(false);
-
-	let uri = 'products?limit=9'
+	let limitProducts = 9; 
+	let uri = `products${selectedCategory}?limit=${limitProducts}`;
 
 	useEffect(() => {
 		getApiData(uri)
 		.then(res => {
+			setLoaded(false);
 			dispatch(setProducts(res.data.products));
 			dispatch(setTotal(res.data.total));
 			setLoaded(true);
 		});
-	}, [])
+	}, [category])
 
 	const LoadMoreHandler = () => {
-		getApiData(`products?limit=9&skip=${products.length}`)
+		getApiData(`products${selectedCategory}?limit=${limitProducts}&skip=${products.length}`)
 		.then(res => {
+			console.log(res);
 			dispatch(addProducts(res.data.products));
 		});
 	}

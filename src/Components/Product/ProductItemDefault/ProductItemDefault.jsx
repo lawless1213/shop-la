@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import s from './ProductItemDefault.module.scss';
 // import { addProductToCart } from '../../../../data/reducer/ShoppingCartReducer';
 import { useDispatch } from 'react-redux';
+import ReactStars from "react-rating-stars-component";
 
 const ProductItemDefault = (props) => {
 
@@ -9,7 +10,7 @@ const ProductItemDefault = (props) => {
 	// let dispatch = useDispatch();
 
 	const ShowMoreHandler = () => {
-		navigate(`/products/${props.product.id}`);
+		navigate(`/product/${props.product.id}`);
 	}
 
 	const AddToCartHandler = () => {
@@ -30,6 +31,11 @@ const ProductItemDefault = (props) => {
 			<div className={s.info}>
 				<div className={`${s.title} f-s5`} onClick={ShowMoreHandler}>{props.product.title}</div>
 				<div className={`${s.description} f-caption`}>{props.product.description}</div>
+				<ReactStars
+					value={3}
+					size={24}
+					edit={false}
+				/>
 			</div>
 			<div className={s.actions}>
 				<div className={s.priceBlock}>

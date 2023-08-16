@@ -113,6 +113,65 @@ $fonts: (
 }
 //------------
 
+//dropdown
+.dropdown_wrap {
+	&.is-open {
+		.dropdown {
+			border-radius: 12px 12px 0 0;
+		}
+		
+	}
+
+	.dropdown {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		min-width: 250px;
+		padding: 10px 16px;
+		background: var(--color-primary-h);
+		border: 1px solid var(--color-primary-d);
+		border-radius: 12px;
+
+		.dropdown_placeholder {
+			text-transform: capitalize;
+		}
+
+		.icon {
+			display: block;
+			font-size: 16px;
+			font-weight: 700;
+		}
+	}
+
+	.dropdown_menu {
+		> div {
+			text-transform: capitalize;
+		}
+	}
+}
+//--------------
+
+//scrollbar
+* {
+	&::-webkit-scrollbar {
+    width: 4px;
+    height: 100%;
+    background-color: var(--color-primary-d);
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: var(--color-primary-d);
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary-b);
+    border-radius: 6px;
+  }
+}
+//---------------
+
 
 body {
 	background: var(--color-primary-h);

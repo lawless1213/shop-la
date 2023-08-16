@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import s from "./ProductPage.module.scss";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import getApiData from "../../../data/api";
 
 const ProductPage = () => {
-	let dispatch = useDispatch();
+	// let dispatch = useDispatch();
 	let {productId} = useParams();
 	let [loaded, setLoaded] = useState(false);
 	let [product, setProduct] = useState(0);
@@ -15,7 +15,6 @@ const ProductPage = () => {
 	useEffect(() => {
 		getApiData(`products/${productId}`)
 		.then(res => {
-			console.log(res);
 			setProduct(res.data);
 			setLoaded(true);
 		}, [])
