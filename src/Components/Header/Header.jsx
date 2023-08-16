@@ -24,8 +24,9 @@ const Header = () => {
 				</div>
 			</div>
 			<nav className={s.nav}>
+				<Link className='myLink dark' to='/products'>All</Link>
 				<Link className='myLink dark' to='/products/Bakery'>Bakery</Link>
-				<Link className='myLink dark' to='/products/Bakery'>Bakery</Link>
+				<Link className='myLink dark' to='/products/Phones'>Phones</Link>
 				<Link className='myLink dark' to='/products/Bakery'>Bakery</Link>
 				<Link className='myLink dark' to='/products/Bakery'>Bakery</Link>
 			</nav>

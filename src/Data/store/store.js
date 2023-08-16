@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import shopReducer from "../reducer/shopReducer";
+import productsReducer from "../../data/reducers/productsReducer";
 
 let store  = configureStore({
 	reducer: {
-		// shop: shopReducer,
+		products: productsReducer,
 	}
 })
 
