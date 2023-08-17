@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import ReactStars from "react-rating-stars-component";
 
 const ProductItemDefault = (props) => {
-
 	let navigate = useNavigate();
 	let dispatch = useDispatch();
 

@@ -12,7 +12,7 @@ const Banner = () => {
 	return (
 		<Swiper
 		className={s.Banner}
-		spaceBetween={50}
+		spaceBetween={0}
 		loop={true}
 		modules={[Pagination]}
 		pagination={{ clickable: true }}

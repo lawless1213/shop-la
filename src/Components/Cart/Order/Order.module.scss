@@ -6,6 +6,12 @@
 	border-radius: 12px;
 	gap: 40px;
 
+	.Header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
 	.CartProducts {
 		display: flex;
 		flex-direction: column;

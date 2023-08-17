@@ -1,9 +1,11 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import s from './Order.module.scss';
 import ProductItemCart from '../../Product/ProductItemCart/ProductItemCart';
 import { Link } from 'react-router-dom';
+import { removeAllCart } from '../../../data/reducers/cartReducer';
 
 const Order = () => {
+	let dispatch = useDispatch();
 	let products = useSelector(state => state.cart.products);
 
 	const countSumCart = () => {
@@ -15,10 +17,21 @@ const Order = () => {
 		return parseInt(sum);
 	}
 
+	const removeAllCartHandler = () => {
+		dispatch(removeAllCart());
+	}
+
 	return (
 		<div className={s.Order}>
-			<div className={`${s.Title} f-s3`}>Order Summary</div>
-
+			<div className={s.Header}>
+				<div className={`${s.Title} f-s3`}>Order Summary</div>
+				{
+					products.length ?
+						<button className='myLink' onClick={removeAllCartHandler}>Clear cart</button>
+					:
+						''
+				}
+			</div>
 			<div className={s.CartProducts}>
 				{
 					products.length ?

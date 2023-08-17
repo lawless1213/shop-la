@@ -44,7 +44,6 @@ const Header = () => {
 					<Link className='myLink dark' to={"mailto:" + data.contacts.mail}>{data.contacts.mail}</Link>
 				</div>
 				<div className={s.links}>
-					<Link className='myLink' to='/products'>Catalog</Link>
 					<Link className='myLink' to='/blog'>Blog</Link>
 					<Link className='myLink' to='/about'>About Us</Link>
 					{/* <Link className='myLink' to='/careers'>Careers</Link> */}
@@ -69,6 +68,7 @@ const Header = () => {
 						/>
 						}
 					/>
+					<Route path='/' element={<Link className='myButton transparent big' to='/products'>Go to catalog</Link>}/>
 				</Routes>
 				<div className={s.userPanel}>
 					<Link className='myLink dark' to='/cart'>
