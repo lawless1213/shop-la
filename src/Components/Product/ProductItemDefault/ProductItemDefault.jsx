@@ -32,9 +32,16 @@ const ProductItemDefault = (props) => {
 				<div className={`${s.title} f-s5`} onClick={ShowMoreHandler}>{props.product.title}</div>
 				<div className={`${s.description} f-caption`}>{props.product.description}</div>
 				<ReactStars
-					value={3}
-					size={24}
+					value={props.product.rating}
+					count={5}
 					edit={false}
+					isHalf={true}
+					classNames={"rating"}
+					activeColor={'#151515'}
+					color={'#EBEBEB'}
+					emptyIcon={<span class="icon no_fill material-symbols-outlined">grade</span>}
+					halfIcon={<span class="icon half material-symbols-outlined">star_half</span>}
+					filledIcon={<span class="icon fill material-symbols-outlined">grade</span>}
 				/>
 			</div>
 			<div className={s.actions}>
