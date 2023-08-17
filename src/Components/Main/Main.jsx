@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import Banner from '../Banner/Banner';
 import s from './Main.module.scss';
 import ProductSection from './ProductSection/ProductSection';
+import PostSection from './PostSection/PostSection';
 
 const Main = () => {
 	let categories = useSelector(state => state.products.categories);
@@ -14,8 +15,10 @@ const Main = () => {
 					categories.slice(1, 3).map(category => <ProductSection category={category}/>)
 				}
 
+				<PostSection/>
+				
 				{
-					categories.slice(4, 7).map(category => <ProductSection category={category}/>)
+					categories.slice(4, 6).map(category => <ProductSection category={category}/>)
 				}
 			</div>
 		</div>

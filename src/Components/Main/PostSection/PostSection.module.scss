@@ -1,0 +1,26 @@
+.PostSection {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+
+	.Header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+
+		.Title {
+			text-transform: capitalize;
+		}
+	}
+
+	.Content {
+		position: relative;
+		min-height: 245px;
+
+		.Posts {
+			width: 100%;
+			display: grid;
+			grid-template-columns: repeat(4, minmax(230px, calc((1170px - 32px*3)/4)));
+		}
+	}
+}
