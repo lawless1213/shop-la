@@ -1,20 +1,20 @@
 import { useNavigate } from 'react-router-dom';
 import s from './ProductItemDefault.module.scss';
-// import { addProductToCart } from '../../../../data/reducer/ShoppingCartReducer';
+import { addToCart } from '../../../data/reducers/cartReducer';
 import { useDispatch } from 'react-redux';
 import ReactStars from "react-rating-stars-component";
 
 const ProductItemDefault = (props) => {
 
 	let navigate = useNavigate();
-	// let dispatch = useDispatch();
+	let dispatch = useDispatch();
 
 	const ShowMoreHandler = () => {
 		navigate(`/product/${props.product.id}`);
 	}
 
 	const AddToCartHandler = () => {
-		// dispatch(addProductToCart(props.product));
+		dispatch(addToCart(props.product));
 	}
 
 	const CreateDiscountPrice = () => {
@@ -39,9 +39,9 @@ const ProductItemDefault = (props) => {
 					classNames={"rating"}
 					activeColor={'#151515'}
 					color={'#EBEBEB'}
-					emptyIcon={<span class="icon no_fill material-symbols-outlined">grade</span>}
-					halfIcon={<span class="icon half material-symbols-outlined">star_half</span>}
-					filledIcon={<span class="icon fill material-symbols-outlined">grade</span>}
+					emptyIcon={<span className="icon no_fill material-symbols-outlined">grade</span>}
+					halfIcon={<span className="icon half material-symbols-outlined">star_half</span>}
+					filledIcon={<span className="icon fill material-symbols-outlined">grade</span>}
 				/>
 			</div>
 			<div className={s.actions}>

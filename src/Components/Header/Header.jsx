@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import { data } from '../../data/data';
 import s from './Header.module.scss';
 import Logo from '../UI/Logo/Logo';
@@ -34,6 +34,7 @@ const Header = () => {
 					<Link className='myLink dark' to={"mailto:" + data.contacts.mail}>{data.contacts.mail}</Link>
 				</div>
 				<div className={s.links}>
+					<Link className='myLink' to='/products'>Catalog</Link>
 					<Link className='myLink' to='/blog'>Blog</Link>
 					<Link className='myLink' to='/about'>About Us</Link>
 					<Link className='myLink' to='/careers'>Careers</Link>
@@ -41,17 +42,24 @@ const Header = () => {
 			</div>
 			<div className={s.main}>
 				<Logo/>
-				<Dropdown 
-					options={categories} 
-					onChange={navigateToHandler} 
-					placeholder="All categories" 
-					className='dropdown_wrap'
-					controlClassName='dropdown'
-					placeholderClassName='dropdown_placeholder f-button'
-					menuClassName='dropdown_menu'
-					arrowClosed={<span class="icon material-symbols-outlined">expand_more</span>}
-  				arrowOpen={<span class="icon material-symbols-outlined">expand_less</span>}
-				/>
+				<Routes>
+					<Route 
+						path='/products/*' 
+						element={
+							<Dropdown 
+							options={categories} 
+							onChange={navigateToHandler} 
+							placeholder="All categories" 
+							className='dropdown_wrap'
+							controlClassName='dropdown'
+							placeholderClassName='dropdown_placeholder f-button'
+							menuClassName='dropdown_menu'
+							arrowClosed={<span className="icon material-symbols-outlined">expand_more</span>}
+							arrowOpen={<span className="icon material-symbols-outlined">expand_less</span>}
+						/>
+						}
+					/>
+				</Routes>
 				<div className={s.userPanel}>
 					<Link className='myLink' to='/cart'>Cart</Link>
 				</div>

@@ -32,7 +32,6 @@ const Products = () => {
 	const LoadMoreHandler = () => {
 		getApiData(`products${selectedCategory}?limit=${limitProducts}&skip=${products.length}`)
 		.then(res => {
-			console.log(res);
 			dispatch(addProducts(res.data.products));
 		});
 	}
@@ -46,10 +45,10 @@ const Products = () => {
 					<Preloader/>
 			}
 			{
-				total !== products.length ? 
+				loaded && total !== products.length ? 
 					<button className='myButton' onClick={LoadMoreHandler}>
 						<div className="caption">Show more products</div>
-						<span class="icon material-symbols-outlined">expand_more</span>
+						<span className="icon material-symbols-outlined">expand_more</span>
 					</button>
 				:
 					''
