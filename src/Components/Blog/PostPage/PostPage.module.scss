@@ -1,0 +1,68 @@
+.PostPage {
+	
+
+	.PostPageItem {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		overflow: hidden;
+		gap: 10px;
+
+		.Image {
+			width: 100%;
+			height: 400px;
+			background: var(--color-primary-e);
+			border-radius: 12px;
+		}
+	
+		.Tags {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 8px;
+		}
+	
+		.Title {
+			overflow: hidden;
+			width: 100%;
+			margin-top: auto;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+
+		.Body,
+		.Title {
+			align-self: center;
+			max-width: 700px;
+		}
+
+		.Info {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 100%;
+
+			.Reactions {
+				.Icon {
+
+				}
+			}
+		}
+	}
+
+	.Comments {
+		display: flex;
+		flex-direction: column;
+		max-width: 700px;
+		margin: 48px auto 0;
+		gap: 24px;
+
+		.Comment {
+			display: flex;
+			flex-direction: column;
+			gap: 24px;
+			padding: 16px;
+			border: 1px solid var(--color-primary-d);
+			border-radius: 12px;
+		}
+	}
+}

@@ -38,7 +38,7 @@ const ProductItemCart = (props) => {
 			</div>
 			<div className={s.actions}>
 				<button>
-					<span className={`${s.icon} material-symbols-outlined`}>volunteer_activism</span>
+					<span className={`${s.icon} material-symbols-outlined`}>favorite</span>
 					<span className={`${s.caption} f-caption`}>Wishlist</span>
 				</button>
 				<button>

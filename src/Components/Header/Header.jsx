@@ -69,6 +69,7 @@ const Header = () => {
 						}
 					/>
 					<Route path='/' element={<Link className='myButton transparent big' to='/products'>Go to catalog</Link>}/>
+					<Route path='/blog/*' element={<Link className='myButton transparent big' to='/products'>Go to catalog</Link>}/>
 				</Routes>
 				<div className={s.userPanel}>
 					<Link className='myLink dark' to='/cart'>

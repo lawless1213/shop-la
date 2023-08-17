@@ -8,6 +8,7 @@ import AboutUs from './Components/AboutUs/AboutUs';
 import Careers from './Components/Careers/Careers';
 import Catalog from './Components/Catalog/Catalog';
 import ProductPage from './Components/Product/ProductPage/ProductPage';
+import PostPage from './Components/Blog/PostPage/PostPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/products/*" element={<Catalog/>}/>
         <Route path="/products/categories/:category" element={<Catalog/>}/>
         <Route path='/product/:productId' element={<ProductPage/>}></Route>
+        <Route path='/blog/post/:postId' element={<PostPage/>}></Route>
       </Routes>
     </div>
   );

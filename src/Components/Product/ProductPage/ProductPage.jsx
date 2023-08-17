@@ -9,8 +9,6 @@ const ProductPage = () => {
 	let {productId} = useParams();
 	let [loaded, setLoaded] = useState(false);
 	let [product, setProduct] = useState(0);
-
-	console.log(productId);
 	
 	useEffect(() => {
 		getApiData(`products/${productId}`)
