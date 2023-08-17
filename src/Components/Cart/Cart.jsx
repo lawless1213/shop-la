@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import s from './Cart.module.scss';
 import Form from './Form/Form';
-import Products from './CartProducts/CartProducts';
+import Order from './Order/Order';
 
 const Cart = () => {
 	let products = useSelector(state => state.cart.products);
@@ -14,7 +14,7 @@ const Cart = () => {
 				:
 					''
 			}
-			<Products/>
+			<Order/>
 			
 		</div>
 	)

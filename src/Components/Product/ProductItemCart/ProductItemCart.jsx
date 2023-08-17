@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import s from './ProductItemCart.module.scss';
-import { addToCart, removeFromCart } from '../../../data/reducers/cartReducer';
+import { incrementCount, decrementCount, removeFromCart } from '../../../data/reducers/cartReducer';
 import { useDispatch } from 'react-redux';
 import ReactStars from "react-rating-stars-component";
 
@@ -12,14 +12,24 @@ const ProductItemCart = (props) => {
 		navigate(`/product/${props.product.id}`);
 	}
 
-	const removeFromCartHandler = () => {
-		dispatch(removeFromCart(props.product.id));
-	}
-
 	const CreateDiscountPrice = () => {
 		let res = (100 + parseInt(props.product.info.discountPercentage))/100 * props.product.info.price;
 		return parseInt(res);
 	}
+
+	const removeFromCartHandler = () => {
+		dispatch(removeFromCart(props.product.id));
+	}
+
+	const incrementCountHandler = () => {
+		dispatch(incrementCount(props.product.id));
+	}
+
+	const decrementCountHandler = () => {
+		dispatch(decrementCount(props.product.id));
+	}
+
+	
 
 	return (
 		<div className={s.ProductItemCart}>
@@ -60,7 +70,11 @@ const ProductItemCart = (props) => {
 						<div className={`${s.price} f-s4`}>{props.product.info.price}USD</div>
 						<div className={`${s.oldPrice} f-s6`}>{CreateDiscountPrice()}USD</div>
 					</div>
-					<input type="num" value={props.product.count} />
+					<div className={s.Counter}>
+						<button className={`myButton mini transparent ${props.product.count === 1 ? 'disabled' : ''}`} onClick={decrementCountHandler}>-</button>
+						<span className={`${s.Count} f-s5`}>{props.product.count}</span>
+						<button className='myButton mini transparent' onClick={incrementCountHandler}>+</button>
+					</div>
 				</div>
 			</div>
 		</div>

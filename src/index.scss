@@ -69,11 +69,21 @@ $fonts: (
 	font-family: 'Poppins', sans-serif;
 	font-size: 15px;
 	font-weight: 700;
+	text-decoration: none;
 	color: var(--color-white);
 	background-color: var(--color-secondary);
 	border: 2px solid var(--color-secondary-b);
 	border-radius: 12px;
+	transition: 0.2s;
 	gap: 6px;
+
+	&:hover {
+		filter: brightness(1.1);
+	}
+
+	&.mini {
+		padding: 8px 10px;
+	}
 
 	&.small {
 		padding: 12px;
@@ -83,13 +93,23 @@ $fonts: (
 		padding: 12px 48px;
 	}
 
-	&.transparent {
-		background-color: none; 
+	&.transparent { 
 		color: var(--color-primary);
+		background-color: unset;
+
+		&:hover {
+			color: var(--color-white);
+			background-color: var(--color-secondary);
+		}
 
 		.icon {
 			color: var(--color-secondary);
 		}
+	}
+
+	&.disabled {
+		pointer-events: none;
+		filter: opacity(0.3);
 	}
 
 	.icon {
@@ -100,13 +120,41 @@ $fonts: (
 
 //Links
 .myLink {
+	position: relative;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 	text-decoration: none;
 	color: var(--color-secondary);
+	transition: 0.2s;
+
+	&:hover {
+		filter: brightness(1.1);
+	}
 
 	&.dark {
 		color: var(--color-primary);
+
+		&:hover {
+			color: var(--color-secondary);
+		}
+	}
+
+	.icon {
+		display: block;
+	}
+
+	.counter {
+		position: absolute;
+		bottom: -8px;
+    left: -6px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 20px;
+		height: 20px;
+		color: var(--color-white);
+		background: var(--color-add-2);
+		border-radius: 12px;
 	}
 }
 //------------

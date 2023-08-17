@@ -4,7 +4,7 @@ import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import { data } from '../../data/data';
 import s from './Header.module.scss';
 import Logo from '../UI/Logo/Logo';
-import { setCategories, setSelectCategory } from '../../data/reducers/productsReducer';
+import { setCategories } from '../../data/reducers/productsReducer';
 import getApiData from '../../data/api';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
@@ -12,6 +12,7 @@ import 'react-dropdown/style.css';
 
 const Header = () => {
 	let categories = useSelector(state => state.products.categories);
+	let products = useSelector(state => state.cart.products);
 	let navigate = useNavigate();
 	let dispatch = useDispatch();
 
@@ -21,6 +22,15 @@ const Header = () => {
 			dispatch(setCategories(res.data));
 		});
 	}, [])
+
+	const countProductsHandler = () => {
+		let counter = 0;
+		products.forEach(product => {
+			counter = counter + product.count;
+		})
+
+		return parseInt(counter);
+	}
 
 	const navigateToHandler = (e) => {
 		navigate(`/products/categories/${e.value}`);
@@ -37,7 +47,7 @@ const Header = () => {
 					<Link className='myLink' to='/products'>Catalog</Link>
 					<Link className='myLink' to='/blog'>Blog</Link>
 					<Link className='myLink' to='/about'>About Us</Link>
-					<Link className='myLink' to='/careers'>Careers</Link>
+					{/* <Link className='myLink' to='/careers'>Careers</Link> */}
 				</div>
 			</div>
 			<div className={s.main}>
@@ -61,7 +71,15 @@ const Header = () => {
 					/>
 				</Routes>
 				<div className={s.userPanel}>
-					<Link className='myLink' to='/cart'>Cart</Link>
+					<Link className='myLink dark' to='/cart'>
+						<span class="icon material-symbols-outlined">shopping_cart</span>
+						{
+							countProductsHandler() ?
+								<div className="counter f-caption">{countProductsHandler()}</div>
+							:
+								''
+						}
+					</Link>
 				</div>
 			</div>
 		</header>
