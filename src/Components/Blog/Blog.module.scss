@@ -1,4 +1,9 @@
 .Blog {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 64px;
+
 	.PostGrid {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
