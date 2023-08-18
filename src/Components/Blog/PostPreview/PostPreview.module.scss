@@ -5,11 +5,23 @@
 	gap: 10px;
 	overflow: hidden;
 
+	.Image,
+	.Title {
+		cursor: pointer;
+	}
+
 	.Image {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		width: 100%;
 		height: 180px;
 		background: var(--color-primary-e);
 		border-radius: 12px;
+
+		.icon {
+			color: var(--color-primary-c);
+		}
 	}
 
 	.Tags {

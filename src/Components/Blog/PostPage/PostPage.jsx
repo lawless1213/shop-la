@@ -46,6 +46,7 @@ const PostPage = () => {
 							</button>
 						</div>
 						<div className={s.Image}>
+							<span className={`${s.icon} material-symbols-outlined`}>image_not_supported</span>
 							{/* <img src="" alt="" /> */}
 						</div>
 						<div className={`${s.Title} f-s4`}>{post.title}</div>
