@@ -7,7 +7,11 @@
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
   min-height: 100vh;
 
-  @media (max-width: 700) {
+  
+}
+
+@media (max-width: 768px) { 
+  .App {
     padding: 0 20px 20px;
   }
 }

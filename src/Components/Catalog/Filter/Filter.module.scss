@@ -2,4 +2,14 @@
 	align-self: start;
 	top: 50px;
 	position: sticky;
+	width: 270px;
+
+	@media (max-width: 900px) { 
+		position: fixed;
+		position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+	}
 }
+
