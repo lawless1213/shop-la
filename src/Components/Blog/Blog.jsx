@@ -35,12 +35,9 @@ const Blog = () => {
 		<div className={s.Blog}>
 			{
 				loaded ? 
-					<div className={`${s.PostGrid} big`}>
+					<div className={`${s.PostGrid} ${s.grid}`}>
 						{
-							posts.slice(0, 2).map(post => <PostPreview className='big' key={post.id} post={post}/>)
-						}
-						{
-							posts.slice(2).map(post => <PostPreview key={post.id} post={post}/>)
+							posts.map(post => <PostPreview className='big' key={post.id} post={post}/>)
 						}
 					</div>
 					
