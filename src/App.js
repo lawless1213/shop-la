@@ -9,6 +9,8 @@ import Careers from './Components/Careers/Careers';
 import Catalog from './Components/Catalog/Catalog';
 import ProductPage from './Components/Product/ProductPage/ProductPage';
 import PostPage from './Components/Blog/PostPage/PostPage';
+import OrderSummary from './Components/Cart/OrderSummary/OrderSummary';
+
 
 function App() {
   return (
@@ -17,9 +19,10 @@ function App() {
       <Routes>
         <Route path='/' element={<Main/>}></Route>
         <Route path="/cart" element={<Cart/>}/>
+        <Route path="/cart/order-summary" element={<OrderSummary/>}/>
         <Route path="/blog" element={<Blog/>}/>
         <Route path="/about" element={<AboutUs/>}/>
-        <Route path="/careers" element={<Careers/>}/>
+        {/* <Route path="/careers" element={<Careers/>}/> */}
         <Route path="/products/*" element={<Catalog/>}/>
         <Route path="/products/categories/:category" element={<Catalog/>}/>
         <Route path='/product/:productId' element={<ProductPage/>}></Route>

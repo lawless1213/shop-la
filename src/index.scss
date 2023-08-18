@@ -1,7 +1,12 @@
 @use 'scss-reset/reset';
 
-//Colors
+
 :root {
+// BreakPoints
+	--tablet: 768px;
+//--------------
+
+//Colors
 	--color-white: #fff;
 
 	--color-primary: #151515;
@@ -258,4 +263,8 @@ $fonts: (
 
 body {
 	background: var(--color-primary-h);
+
+	@media (max-width: 700) {
+    background: red;
+  }
 }

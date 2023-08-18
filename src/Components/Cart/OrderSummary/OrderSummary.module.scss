@@ -1,0 +1,8 @@
+.OrderSummary {
+	display: grid;
+	grid-template-columns: minmax(300px, 600px) minmax(450px, 1fr);
+
+	&.empty {
+		grid-template-columns: 1fr;
+	}
+}
