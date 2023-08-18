@@ -30,7 +30,7 @@ const ProductSection = ({category}) => {
 				<div className={`${s.Title} f-s4`}>{category}</div>
 				<Link className='myButton mini transparent' to={btnLink} >
 					<div className="caption">More {category}</div>
-					<span class="icon material-symbols-outlined">arrow_forward_ios</span>
+					<span className="icon material-symbols-outlined">arrow_forward_ios</span>
 				</Link>
 			</div>
 			<div className={s.Content}>
@@ -42,7 +42,7 @@ const ProductSection = ({category}) => {
 						spaceBetween={32}
 					>
 						{
-							products.map(product => <SwiperSlide><ProductItemDefault product={product}/></SwiperSlide>)
+							products.map(product => <SwiperSlide key={product.id}><ProductItemDefault product={product}/></SwiperSlide>)
 						}
 					</Swiper>
 					:

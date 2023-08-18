@@ -16,7 +16,7 @@ const PostPreview = ({post}) => {
 			</div>
 			<div className={s.Tags}>
 				{
-					post.tags.map(tag => <div className={`${s.myTag} myTag f-s6`}>{tag}</div>)
+					post.tags.map(tag => <div key={post.tags.indexOf(tag)} className={`${s.myTag} myTag f-s6`}>{tag}</div>)
 				}
 			</div>
 			<div className={`${s.Title} f-s4`} onClick={ShowMoreHandler}>{post.title}</div>

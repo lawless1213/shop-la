@@ -33,11 +33,11 @@ const PostPage = () => {
 						<Link to='/blog' className="myLink">Back to blog</Link>
 						<div className={s.Tags}>
 							{
-								post.tags.map(tag => <div className={`${s.myTag} myTag f-s6`}>{tag}</div>)
+								post.tags.map(tag => <div key={post.tags.indexOf(tag)} className={`${s.myTag} myTag f-s6`}>{tag}</div>)
 							}
 						</div>
 						<button className='myLink dark' style={{pointerEvents:'none'}}>
-							<span class="icon material-symbols-outlined">favorite</span>
+							<span className="icon material-symbols-outlined">favorite</span>
 							{
 								post.reactions > 0 ?
 									<div className="counter f-caption">{post.reactions}</div>
@@ -60,7 +60,7 @@ const PostPage = () => {
 				<div className='f-s3'>Comments</div>
 				{
 					loadedComments ? 
-						comments.map(comment => <div className={s.Comment}><div className={`${s.User} f-s5`}>{comment.user.username}</div><div className={`${s.Text} f-body`}>{comment.body}</div></div>)
+						comments.map(comment => <div key={comment.id} className={s.Comment}><div className={`${s.User} f-s5`}>{comment.user.username}</div><div className={`${s.Text} f-body`}>{comment.body}</div></div>)
 					:
 					<Preloader/>
 				}

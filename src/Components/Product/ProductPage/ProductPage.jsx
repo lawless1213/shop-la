@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import getApiData from "../../../data/api";
 import { addToCart, incrementCount, decrementCount } from '../../../data/reducers/cartReducer';
 import ReactStars from "react-rating-stars-component";
-import Preloader from "../../UI/Preloader/Preloader";
+import Preloader from "../../UI/Preloader/Preloader";	
 
 const ProductPage = () => {
 	let dispatch = useDispatch();

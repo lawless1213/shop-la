@@ -73,7 +73,7 @@ const Header = () => {
 				</Routes>
 				<div className={s.userPanel}>
 					<Link className='myLink dark' to='/cart'>
-						<span class="icon material-symbols-outlined">shopping_cart</span>
+						<span className="icon material-symbols-outlined">shopping_cart</span>
 						{
 							countProductsHandler() ?
 								<div className="counter f-caption">{countProductsHandler()}</div>

@@ -29,7 +29,7 @@ const PostSection = ({category}) => {
 				<div className={`${s.Title} f-s4`}>Blog</div>
 				<Link className='myButton mini transparent' to={btnLink} >
 					<div className="caption">Go to blog</div>
-					<span class="icon material-symbols-outlined">arrow_forward_ios</span>
+					<span className="icon material-symbols-outlined">arrow_forward_ios</span>
 				</Link>
 			</div>
 			<div className={s.Content}>
@@ -41,7 +41,7 @@ const PostSection = ({category}) => {
 						spaceBetween={32}
 					>
 						{
-							posts.map(post => <SwiperSlide><PostPreview post={post}/></SwiperSlide>)
+							posts.map(post => <SwiperSlide key={post.id}><PostPreview post={post}/></SwiperSlide>)
 						}
 					</Swiper>
 					:

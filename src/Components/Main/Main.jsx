@@ -12,13 +12,13 @@ const Main = () => {
 			<Banner/>
 			<div className={s.Content}>
 				{
-					categories.slice(1, 3).map(category => <ProductSection category={category}/>)
+					categories.slice(1, 3).map(category => <ProductSection key={category} category={category}/>)
 				}
 
 				<PostSection/>
 				
 				{
-					categories.slice(4, 6).map(category => <ProductSection category={category}/>)
+					categories.slice(4, 6).map(category => <ProductSection key={category} category={category}/>)
 				}
 			</div>
 		</div>

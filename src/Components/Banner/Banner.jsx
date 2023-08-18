@@ -19,7 +19,7 @@ const Banner = () => {
 		>
 			{
 				banners.map(banner => 
-					<SwiperSlide className={s.BannerItem}>
+					<SwiperSlide key={banners.indexOf(banner)} className={s.BannerItem}>
 						<Link to='/products' className={s.Image_wrapper}>
 							<div className={s.Image}>
 								<img src={banner} alt="banner" />
