@@ -11,8 +11,14 @@ const PostPreview = ({post}) => {
 	return (
 		<div className={s.PostPreview}>
 			<div className={s.Image} onClick={ShowMoreHandler}>
-				<span className={`${s.icon} material-symbols-outlined`}>image_not_supported</span>
-				{/* <img src="" alt="" /> */}
+				{
+					post.image?
+						<img src={post.image} alt={post.title} />
+					:
+						<span className={`${s.icon} material-symbols-outlined`}>image_not_supported</span>
+				}
+				
+				
 			</div>
 			<div className={s.Tags}>
 				{
