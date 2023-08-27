@@ -9,7 +9,7 @@ import getApiData from '../../data/api';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { toggleAsideState } from '../../data/reducers/settingsReducer';
-import AsideMenu from '../Aside/AsideMenu';
+import AsideMenu from '../Asides/AsideMenu';
 
 const Header = () => {
 	let categories = useSelector(state => state.products.categories);
