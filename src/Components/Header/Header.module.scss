@@ -4,11 +4,16 @@
 		justify-content: space-between;
 		align-items: center;
 		height: 48px;
+		transition: 0.2s;
 
 		.links {
 			display: flex;
 			align-items: center;
 			gap: 30px;
+		}
+
+		@media (max-width: 768px) { 
+			display: none;
 		}
 	}
 
@@ -17,5 +22,20 @@
 		justify-content: space-between;
 		align-items: center;
 		height: 130px;
+
+		.userPanel {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+		}
+
+		@media (max-width: 768px) { 
+			flex-wrap: wrap;
+
+			.headerBtn {
+				order: 3;
+				width: 100%;
+			}
+		}
 	}
 }

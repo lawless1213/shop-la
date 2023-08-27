@@ -1,8 +1,13 @@
 .Logo {
 	height: 50px;
+	transition: 0.2s;
 
 	img {
 		display: block;
 		height: 100%;
+	}
+
+	&:hover {
+		filter: brightness(1.1)
 	}
 }

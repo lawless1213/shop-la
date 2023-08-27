@@ -6,6 +6,22 @@
 	--tablet: 768px;
 //--------------
 
+//Media
+.only {
+	&.desktop {
+		@media (max-width: 768px) { 
+			display: none;
+		}
+	}
+
+	&.mobile {
+		@media (min-width: 768px) { 
+			display: none;
+		}
+	}
+}
+//----------------
+
 //Colors
 	--color-white: #fff;
 
@@ -40,29 +56,8 @@
 	--color-add-3-c: #7CD0D3;
 	--color-add-3-d: #B9E6E8;
 	--color-add-3-e: #ECF6F6;
-}
-//------------
 
-//Fonts
-$fonts: (
-  s1: (fs: 32px, fw: 600, ff: 'Poppins'),
-  s2: (fs: 26px, fw: 600, ff: 'Poppins'),
-  s3: (fs: 22px, fw: 600, ff: 'Poppins'),
-  s4: (fs: 18px, fw: 600, ff: 'Poppins'),
-  s5: (fs: 15px, fw: 600, ff: 'Poppins'),
-  s6: (fs: 12px, fw: 600, ff: 'Poppins'),
-  button: (fs: 15px, fw: 700, ff: 'Poppins'),
-  lead: (fs: 17px, fw: 400, ff: 'Open Sans'),
-  body: (fs: 14px, fw: 400, ff: 'Open Sans'),
-  caption: (fs: 12px, fw: 400, ff: 'Open Sans'),
-);
-
-@each $font, $keys in $fonts {
-  .f-#{$font} {
-		font-family: map-get($keys, ff), sans-serif;
-    font-size: map-get($keys, fs);
-		font-weight: map-get($keys, fw);
-  }
+	--overlay-color: #1515157a;
 }
 //------------
 
@@ -133,21 +128,29 @@ $fonts: (
 //Links
 .myLink {
 	position: relative;
+	display: flex;
+	align-items: center;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 	text-decoration: none;
 	color: var(--color-secondary);
 	transition: 0.2s;
+	gap: 6px;
 
-	&:hover {
+	&:hover,
+	&.active {
 		filter: brightness(1.1);
 	}
 
+	&.active {
+		pointer-events: none;
+	}
+
 	&.dark {
-		color: var(--color-primary);
+		color: var(--color-primary-b);
 
 		&:hover {
-			color: var(--color-secondary);
+			color: var(--color-primary);
 		}
 	}
 
@@ -168,6 +171,56 @@ $fonts: (
 		background: var(--color-add-2);
 		border-radius: 12px;
 	}
+}
+//------------
+
+//Dividers 
+.divider {
+	--color-divider: var(--color-primary-d);
+  border-bottom: 1px dashed var(--color-divider);
+
+  &.brighter {
+		--color-divider: var(var(--color-primary-c));
+  }
+
+  &.line {
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  &.transparent {
+    border: none;
+  }
+
+  @each $margin in (0, 4, 8, 12, 14, 16, 18, 24, 32) {
+    &.m-#{$margin} {
+      margin: 0;
+      margin-top: #{$margin}px;
+      margin-bottom: #{$margin}px;
+    }
+  }
+}
+//------------
+
+//Fonts
+$fonts: (
+  s1: (fs: 32px, fw: 600, ff: 'Poppins'),
+  s2: (fs: 26px, fw: 600, ff: 'Poppins'),
+  s3: (fs: 22px, fw: 600, ff: 'Poppins'),
+  s4: (fs: 18px, fw: 600, ff: 'Poppins'),
+  s5: (fs: 15px, fw: 600, ff: 'Poppins'),
+  s6: (fs: 12px, fw: 600, ff: 'Poppins'),
+  button: (fs: 15px, fw: 700, ff: 'Poppins'),
+  lead: (fs: 17px, fw: 400, ff: 'Open Sans'),
+  body: (fs: 14px, fw: 400, ff: 'Open Sans'),
+  caption: (fs: 12px, fw: 400, ff: 'Open Sans'),
+);
+
+@each $font, $keys in $fonts {
+  .f-#{$font} {
+		font-family: map-get($keys, ff), sans-serif;
+    font-size: map-get($keys, fs);
+		font-weight: map-get($keys, fw);
+  }
 }
 //------------
 
