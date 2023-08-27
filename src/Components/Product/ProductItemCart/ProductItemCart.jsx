@@ -1,15 +1,19 @@
 import { useNavigate } from 'react-router-dom';
 import s from './ProductItemCart.module.scss';
-import { incrementCount, decrementCount, removeFromCart } from '../../../data/reducers/cartReducer';
-import { useDispatch } from 'react-redux';
+import { incrementCount, decrementCount, removeFromCart, toggleWishProduct } from '../../../data/reducers/cartReducer';
+import { useDispatch, useSelector } from 'react-redux';
 import ReactStars from "react-rating-stars-component";
 
 const ProductItemCart = (props) => {
 	let navigate = useNavigate();
 	let dispatch = useDispatch();
+	let id = props.product.id;
+	let wishlist = useSelector(state => state.cart.wishlist);
+	let isWishProduct = wishlist.find(pr => pr.id == id);
+	
 
 	const ShowMoreHandler = () => {
-		navigate(`/product/${props.product.id}`);
+		navigate(`/product/${id}`);
 	}
 
 	const CreateDiscountPrice = () => {
@@ -18,15 +22,20 @@ const ProductItemCart = (props) => {
 	}
 
 	const removeFromCartHandler = () => {
-		dispatch(removeFromCart(props.product.id));
+		dispatch(removeFromCart(id));
 	}
 
 	const incrementCountHandler = () => {
-		dispatch(incrementCount(props.product.id));
+		dispatch(incrementCount(id));
 	}
 
 	const decrementCountHandler = () => {
-		dispatch(decrementCount(props.product.id));
+		dispatch(decrementCount(id));
+	}
+
+	const toggleFavoriteHandler = () => {
+		dispatch(toggleWishProduct(props.product));
+		console.log(isWishProduct);
 	}
 
 	
@@ -37,8 +46,8 @@ const ProductItemCart = (props) => {
 				<img src={props.product.info.thumbnail} alt={props.product.info.title} />
 			</div>
 			<div className={s.actions}>
-				<button>
-					<span className={`${s.icon} material-symbols-outlined`}>favorite</span>
+				<button onClick={toggleFavoriteHandler}>
+					<span className={`${s.icon} ${isWishProduct ? s.fill : ''} material-symbols-outlined`}>favorite</span>
 					<span className={`${s.caption} f-caption`}>Wishlist</span>
 				</button>
 				<button>

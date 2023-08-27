@@ -44,6 +44,14 @@
 				color: var(--color-add-2);
 				font-size: 20px;
 
+				&.fill {
+					font-variation-settings:
+					'FILL' 1,
+					'wght' 600,
+					'GRAD' 0,
+					'opsz' 48
+				}
+
 				&.black {
 					color: var(--color-primary);
 				}

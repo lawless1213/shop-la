@@ -7,13 +7,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { toggleFavoritePost } from "../../../data/reducers/blogReducer";
 
 const PostPage = () => {
-	let favorite = useSelector(state => state.blog.favoritePosts);
 	let {postId} = useParams();
 	let [loaded, setLoaded] = useState(false);
 	let [loadedComments, setLoadedComments] = useState(false);
 	let [post, setPost] = useState(0);
 	let [comments, setComments] = useState([]);
 	let dispatch = useDispatch();
+	let favorite = useSelector(state => state.blog.favoritePosts);
 	let isFavPost = favorite.find(post => post.id == postId);
 
 	const toggleFavorite = () => {
