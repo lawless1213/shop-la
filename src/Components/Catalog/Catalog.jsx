@@ -1,22 +1,20 @@
 import { useState } from 'react';
 import s from './Catalog.module.scss';
-import Filter from './Filter/Filter';
 import Products from './Products/Products';
+import AsideFilter from '../Asides/AsideFilter';
+import { toggleAsideFilterState } from '../../data/reducers/settingsReducer';
+import { useDispatch } from 'react-redux';
 
 const Catalog = () => {
-	let [filterShow, setShowFilter] = useState(false);
+	let dispatch = useDispatch();
+
 	const ShowFilterHandler = () => {
-		setShowFilter(!filterShow);
+		dispatch(toggleAsideFilterState());
 	}
 
 	return (
 		<div className={s.Catalog}>
-			{
-				filterShow ?
-					<Filter/>
-				:
-					''
-			}
+			<AsideFilter/>
 			
 			<button className='myButton transparent' onClick={ShowFilterHandler}>Filter</button>
 			<Products/>

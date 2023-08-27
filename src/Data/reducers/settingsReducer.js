@@ -7,11 +7,14 @@ const settingsSlice = createSlice({
 		asideFilter: false,
 	},
 	reducers: {
-		toggleAsideState(state, action){
-			return {...state, aside: !state.aside}
+		toggleAsideMenuState(state, action){
+			return {...state, asideMenu: !state.asideMenu}
+		},
+		toggleAsideFilterState(state, action){
+			return {...state, asideMenu: !state.asideMenu}
 		}
 	}
 })
 
-export const {toggleAsideState} = settingsSlice.actions;
+export const {toggleAsideMenuState, toggleAsideFilterState} = settingsSlice.actions;
 export default settingsSlice.reducer;

@@ -35,7 +35,6 @@ const ProductItemCart = (props) => {
 
 	const toggleFavoriteHandler = () => {
 		dispatch(toggleWishProduct(props.product));
-		console.log(isWishProduct);
 	}
 
 	

@@ -1,17 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { toggleAsideState } from '../../data/reducers/settingsReducer';
+import { toggleAsideMenuState } from '../../data/reducers/settingsReducer';
 import { data } from '../../data/data';
 import './Aside.scss';
 import Logo from '../UI/Logo/Logo';
 import { Link, NavLink } from 'react-router-dom';
 
 
-const Aside = (props) => {
-	let asideState = useSelector(state => state.settings.aside);
+const AsideMenu = (props) => {
+	let asideState = useSelector(state => state.settings.asideMenu);
 	let dispatch = useDispatch();
 
 	const menuHandler = () => {
-		dispatch(toggleAsideState())
+		dispatch(toggleAsideMenuState())
 	}
 
 	return (
@@ -56,6 +56,6 @@ const Aside = (props) => {
 	)
 }
 
-export default Aside;
+export default AsideMenu;
 
 
