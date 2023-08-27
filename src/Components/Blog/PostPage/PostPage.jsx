@@ -3,13 +3,22 @@ import { Link, useParams } from "react-router-dom";
 import getApiData from "../../../data/api";
 import s from './PostPage.module.scss';
 import Preloader from "../../UI/Preloader/Preloader";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavoritePost } from "../../../data/reducers/blogReducer";
 
 const PostPage = () => {
+	let favorite = useSelector(state => state.blog.favoritePosts);
 	let {postId} = useParams();
 	let [loaded, setLoaded] = useState(false);
 	let [loadedComments, setLoadedComments] = useState(false);
 	let [post, setPost] = useState(0);
 	let [comments, setComments] = useState([]);
+	let dispatch = useDispatch();
+	let isFavPost = favorite.find(post => post.id == postId);
+
+	const toggleFavorite = () => {
+		dispatch(toggleFavoritePost(post));
+	}
 	
 	useEffect(() => {
 		getApiData(`posts/${postId}`)
@@ -36,8 +45,8 @@ const PostPage = () => {
 								post.tags.map(tag => <div key={post.tags.indexOf(tag)} className={`${s.myTag} myTag f-s6`}>{tag}</div>)
 							}
 						</div>
-						<button className='myLink dark' style={{pointerEvents:'none'}}>
-							<span className="icon material-symbols-outlined">favorite</span>
+						<button className='myLink dark'  onClick={toggleFavorite}>
+							<span className={`${isFavPost ? 'fill red' : ''} icon material-symbols-outlined`}>favorite</span>
 							{
 								post.reactions > 0 ?
 									<div className="counter f-caption">{post.reactions}</div>

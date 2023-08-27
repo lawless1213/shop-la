@@ -30,7 +30,6 @@ const cartSlice = createSlice({
 		decrementCount: (state, action) => {
       let id = action.payload;
 			let product = state.products.find(e => e.id === id);
-			console.log(product);
       product.count > 1 ? product.count-- : product.count = 1;
     },
 		removeFromCart(state, action){
