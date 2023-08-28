@@ -8,10 +8,12 @@ const settingsSlice = createSlice({
 	},
 	reducers: {
 		toggleAsideMenuState(state, action){
-			return {...state, asideMenu: !state.asideMenu}
+			document.body.classList.toggle("aside_open");
+			return {...state, asideMenu: !state.asideMenu, aside: !state.aside}
 		},
 		toggleAsideFilterState(state, action){
-			return {...state, asideMenu: !state.asideMenu}
+			document.body.classList.toggle("aside_open");
+			return {...state, asideFilter: !state.asideFilter, aside: !state.aside}
 		}
 	}
 })

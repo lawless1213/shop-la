@@ -8,7 +8,7 @@ import { setCategories } from '../../data/reducers/productsReducer';
 import getApiData from '../../data/api';
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-import { toggleAsideState } from '../../data/reducers/settingsReducer';
+import { toggleAsideMenuState } from '../../data/reducers/settingsReducer';
 import AsideMenu from '../Asides/AsideMenu';
 
 const Header = () => {
@@ -18,7 +18,7 @@ const Header = () => {
 	let dispatch = useDispatch();
 
 	const menuHandler = () => {
-		dispatch(toggleAsideState())
+		dispatch(toggleAsideMenuState())
 	}
 
 	useEffect(() => {

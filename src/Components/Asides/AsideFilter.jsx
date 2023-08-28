@@ -19,7 +19,10 @@ const AsideFilter = (props) => {
 					<span className="icon material-symbols-outlined">close</span>
 				</button>
 				<Logo onClick={menuHandler}/>
-		
+				<form className='form'>
+					
+				</form>
+				<button className='myButton transparent fluid' style={{marginTop:'auto'}} onClick={menuHandler}>Clear filter</button>
 			</div>
 		</div>
 	)
