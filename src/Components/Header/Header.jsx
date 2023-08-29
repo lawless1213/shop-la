@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { data } from '../../data/data';
 import s from './Header.module.scss';
@@ -40,6 +40,18 @@ const Header = () => {
 	const navigateToHandler = (e) => {
 		navigate(`/products/categories/${e.value}`);
 	}
+
+	let [searchValue, setSearchValue] = useState('');
+
+	const changeSearchValue = (event) => {
+		setSearchValue(event.target.value);
+	}
+
+	const submitSearchHandler = (event) => {
+		event.preventDefault();
+		navigate(`/products/search/${searchValue}`);
+		setSearchValue('');	
+	}
 	
 
 	return ( 
@@ -61,17 +73,29 @@ const Header = () => {
 					<Route 
 						path='/products/*' 
 						element={
-							<Dropdown 
-							options={categories} 
-							onChange={navigateToHandler} 
-							placeholder="All categories" 
-							className={`${s.headerBtn} dropdown_wrap`}
-							controlClassName='dropdown'
-							placeholderClassName='dropdown_placeholder f-button'
-							menuClassName='dropdown_menu'
-							arrowClosed={<span className="icon material-symbols-outlined">expand_more</span>}
-							arrowOpen={<span className="icon material-symbols-outlined">expand_less</span>}
-						/>
+							<form className={`${s.headerBtn} form inline`} onSubmit={submitSearchHandler}>
+								<div className="form-group">
+									<div className="group-main">
+										<Dropdown 
+											options={categories} 
+											onChange={navigateToHandler} 
+											placeholder="All categories" 
+											className={`${s.headerBtn} dropdown_wrap`}
+											controlClassName='dropdown'
+											placeholderClassName='dropdown_placeholder f-button'
+											menuClassName='dropdown_menu'
+											arrowClosed={<span className="icon material-symbols-outlined">expand_more</span>}
+											arrowOpen={<span className="icon material-symbols-outlined">expand_less</span>}
+										/>
+									</div>
+								</div>
+								<div className="form-group">
+									<div className="group-main">
+										<input value={searchValue} type="text" placeholder='Search' onChange={changeSearchValue} />
+										<button type='submit' className={`myButton transparent ${!searchValue.length ? 'disabled' : ''}`}><span className="icon material-symbols-outlined">search</span></button>
+									</div>
+								</div>
+							</form>
 						}
 					/>
 					<Route path='/' element={<Link className={`${s.headerBtn} myButton transparent big`} to='/products'>Go to catalog</Link>}/>

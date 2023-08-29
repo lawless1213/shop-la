@@ -25,6 +25,7 @@ function App() {
         {/* <Route path="/careers" element={<Careers/>}/> */}
         <Route path="/products/*" element={<Catalog/>}/>
         <Route path="/products/categories/:category" element={<Catalog/>}/>
+        <Route path="/products/search/:search" element={<Catalog/>}/>
         <Route path='/product/:productId' element={<ProductPage/>}></Route>
         <Route path='/blog/post/:postId' element={<PostPage/>}></Route>
       </Routes>

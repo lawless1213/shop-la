@@ -12,12 +12,17 @@ const Products = () => {
 	let total = useSelector(state => state.products.total);
 	let dispatch = useDispatch();
 	let {category} = useParams();
+	let {search} = useParams();
 
 	let selectedCategory = category ? category === 'all' ? '' : `/category/${category}` : '';
 
 	let [loaded, setLoaded] = useState(false);
 	let limitProducts = 9; 
+
 	let uri = `products${selectedCategory}?limit=${limitProducts}`;
+
+	if(search) uri = `products/search?q=${search}&limit=${limitProducts}`;
+
 
 	useEffect(() => {
 		getApiData(uri)
@@ -27,10 +32,10 @@ const Products = () => {
 			dispatch(setTotal(res.data.total));
 			setLoaded(true);
 		});
-	}, [category])
+	}, [category, search])
 
 	const LoadMoreHandler = () => {
-		getApiData(`products${selectedCategory}?limit=${limitProducts}&skip=${products.length}`)
+		getApiData(`${uri}&skip=${products.length}`)
 		.then(res => {
 			dispatch(addProducts(res.data.products));
 		});
@@ -40,7 +45,7 @@ const Products = () => {
 		<div className={`${s.Products} ${s.grid}`}>
 			{
 				loaded ? 
-					products.map(product => <ProductItemDefault key={product.id} product={product}/>)
+					products.length ? products.map(product => <ProductItemDefault key={product.id} product={product}/>) : <div className={`${s.empty_item} f-s4`}>No one item.</div>
 				:
 					<Preloader/>
 			}

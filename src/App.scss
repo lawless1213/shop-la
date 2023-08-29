@@ -1,14 +1,14 @@
 .App {
-  padding: 0 45px 45px;
-  max-width: 1260px;
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  max-width: 1260px;
+  min-height: 100vh;
   margin: 0 auto;
+  padding: 0 45px 45px;
   background: var(--color-white);
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
-  min-height: 100vh;
 
-  &.aside_open {
-  }
 }
 
 @media (max-width: 768px) { 
