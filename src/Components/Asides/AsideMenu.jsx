@@ -21,7 +21,7 @@ const AsideMenu = (props) => {
 					<span className="icon material-symbols-outlined">close</span>
 				</button>
 				<Logo onClick={menuHandler}/>
-				<div className="divider line m-12"></div>
+				<div className="divider brighter line m-12"></div>
 				<div className='nav links'>
 					<NavLink onClick={menuHandler} className='myLink dark f-lead' to='/products'>
 						<span className="icon material-symbols-outlined">dataset</span>
@@ -40,7 +40,7 @@ const AsideMenu = (props) => {
 						About Us
 					</NavLink>
 				</div>
-				<div className="divider line m-12"></div>
+				<div className="divider brighter line m-12"></div>
 				<div className='contacts links'>
 						<Link className='myLink dark' to={"tel:" + data.contacts.phone}>
 							<span className="icon material-symbols-outlined">call</span>

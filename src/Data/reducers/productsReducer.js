@@ -5,8 +5,7 @@ const productsSlice = createSlice({
 	initialState: {
 		categories: ['all'],
 		items: [],
-		filteredProducts: [],
-		filterSettings: [],
+		filters: {},
 		total: 0
 	},
 	reducers: {
@@ -22,9 +21,6 @@ const productsSlice = createSlice({
 		setTotal(state, action){
 			return {...state, total: action.payload}
 		},
-		addFilter(state, action){
-			return { ...state, filterSettings: [...state.filterSettings, ...action.payload]}
-		}
 	}
 })
 

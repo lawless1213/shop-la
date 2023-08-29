@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import s from './Catalog.module.scss';
 import Products from './Products/Products';
 import AsideFilter from '../Asides/AsideFilter';
