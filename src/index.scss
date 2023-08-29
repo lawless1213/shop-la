@@ -257,6 +257,8 @@ $fonts: (
 
 //dropdown
 .dropdown_wrap {
+	width: 100%;
+
 	&.is-open {
 		.dropdown {
 			border-radius: 12px 12px 0 0;
@@ -356,6 +358,10 @@ form {
 		border-radius: 12px;
 		cursor: pointer;
 		min-height: 45px;
+
+		&.fluid {
+			width: 100%;
+		}
 
 		.icon {
 			display: block;

@@ -73,8 +73,8 @@ const Header = () => {
 					<Route 
 						path='/products/*' 
 						element={
-							<form className={`${s.headerBtn} form inline`} onSubmit={submitSearchHandler}>
-								<div className="form-group">
+							<form className={`${s.formHeader} form inline`} onSubmit={submitSearchHandler}>
+								<div className={`${s.dd} form-group`}>
 									<div className="group-main">
 										<Dropdown 
 											options={categories} 
@@ -89,9 +89,9 @@ const Header = () => {
 										/>
 									</div>
 								</div>
-								<div className="form-group">
+								<div className={`${s.search} form-group`}>
 									<div className="group-main">
-										<input value={searchValue} type="text" placeholder='Search' onChange={changeSearchValue} />
+										<input className='fluid' value={searchValue} type="text" placeholder='Search' onChange={changeSearchValue} />
 										<button type='submit' className={`myButton transparent ${!searchValue.length ? 'disabled' : ''}`}><span className="icon material-symbols-outlined">search</span></button>
 									</div>
 								</div>

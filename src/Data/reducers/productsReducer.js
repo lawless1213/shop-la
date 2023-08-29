@@ -5,6 +5,7 @@ const productsSlice = createSlice({
 	initialState: {
 		categories: ['all'],
 		items: [],
+		loadState: false,
 		filters: {},
 		total: 0
 	},
@@ -21,8 +22,12 @@ const productsSlice = createSlice({
 		setTotal(state, action){
 			return {...state, total: action.payload}
 		},
+		setLoadState(state, action){
+			console.log(action.payload);
+			return {...state, loadState: action.payload}
+		},
 	}
 })
 
-export const {setCategories, setProducts, addProducts, setTotal} = productsSlice.actions;
+export const {setCategories, setProducts, addProducts, setTotal, setLoadState} = productsSlice.actions;
 export default productsSlice.reducer;

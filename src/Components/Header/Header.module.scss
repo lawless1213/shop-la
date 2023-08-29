@@ -21,8 +21,8 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		height: 130px;
 		gap: 20px;
+		padding: 20px 0;
 
 		.userPanel {
 			display: flex;
@@ -30,10 +30,26 @@
 			gap: 10px;
 		}
 
+		.formHeader {
+			display: flex;
+			gap: 10px;
+			width: 100%;
+
+			.search,
+			.dd {
+				flex: 1;
+			}
+		}
+
 		@media (max-width: 768px) { 
 			flex-wrap: wrap;
 
-			.headerBtn {
+			.formHeader {
+				grid-template-columns: 1fr;
+			}
+
+			.headerBtn, 
+			.formHeader {
 				order: 3;
 				width: 100%;
 			}
