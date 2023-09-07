@@ -347,18 +347,19 @@ form {
 		gap: 10px;
 	}
 
-	input[type='text'] {
+	input:not([type='radio']):not([type='checkbox']) {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		width: 100%;
+		width: 100%;
 		min-width: 250px;
+		min-height: 45px;
 		padding: 10px 16px;
 		background: var(--color-primary-h);
 		border: 1px solid var(--color-primary-d);
 		border-radius: 12px;
 		cursor: pointer;
-		min-height: 45px;
-		width: 100%;
 
 		.icon {
 			display: block;
@@ -370,7 +371,10 @@ form {
 	.form-group {
 		display: flex;
 		flex-direction: column;
-		gap: 10px;
+
+		.group-label {
+
+		}
 		
 		.group-main {
 			display: flex;
@@ -378,8 +382,8 @@ form {
 
 			&.radio {
 				.radio-item {
-					gap: 8px;
 					align-items: center;
+					gap: 8px;
 				}
 
 				input[type="radio"] {
@@ -395,6 +399,11 @@ form {
 					gap: 8px;
 				}
 			}
+		}
+
+		.group-error {
+			min-height: 18px;
+			color: var(--color-add-2-b);
 		}
 	}
 

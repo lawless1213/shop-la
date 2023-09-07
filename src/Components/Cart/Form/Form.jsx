@@ -3,12 +3,27 @@ import { Formik } from 'formik';
 
 const Form = () => {
 	return (
-		<div className={s.Form}>
-			<Formik
-       initialValues = {{ email: '', password: '' }}
+		<Formik
+       initialValues = {{ email: '', firstName: '', lastName: '' }}
 
        validate={values => {
          const errors = {};
+
+				if (!values.firstName) {
+					errors.firstName = 'Required';
+				} else if (
+					!/^[A-Z][a-z]{2,}$/i.test(values.firstName)
+				) {
+					errors.firstName = 'Invalid first name';
+				}
+
+				if (!values.lastName) {
+					errors.lastName = 'Required';
+				} else if (
+					!/^[A-Z][a-z]{2,}$/i.test(values.lastName)
+				) {
+					errors.lastName = 'Invalid last name';
+				}
 
          if (!values.email) {
            errors.email = 'Required';
@@ -17,14 +32,6 @@ const Form = () => {
          ) {
            errors.email = 'Invalid email address';
          }
-
-				 if (!values.password) {
-					errors.password = 'Required';
-				} else if (
-					!/^.{6}$/i.test(values.email)
-				) {
-					errors.email = 'Invalid password address(6 and more symbols)';
-				}
 
          return errors;
        }}
@@ -46,36 +53,64 @@ const Form = () => {
          isSubmitting,
          /* and other goodies */
        }) => (
-         <form onSubmit={handleSubmit}>
+         <form className={s.Form} onSubmit={handleSubmit}>
+
+					{/* firstName */}
+					<div className="form-group">
+						<label for="firstName" className="group-label f-s6">First Name</label>
+						<div className="group-main">
+							<input
+								type="text"
+								name="firstName"
+								id="firstName"
+								placeholder='First Name'
+								onChange={handleChange}
+								onBlur={handleBlur}
+								value={values.firstName}
+							/>
+						</div>
+						<div className="group-error f-s6">
+							{errors.firstName && touched.firstName && errors.firstName}
+						</div>
+					 </div>
+
+					 {/* lastName */}
+					<div className="form-group">
+						<label for="lastName" className="group-label f-s6">Last Name</label>
+						<div className="group-main">
+							<input
+								type="text"
+								name="lastName"
+								id="lastName"
+								placeholder='Last Name'
+								onChange={handleChange}
+								onBlur={handleBlur}
+								value={values.lastName}
+							/>
+						</div>
+						<div className="group-error f-s6">
+							{errors.lastName && touched.lastName && errors.lastName}
+						</div>
+					 </div>
+
+					{/* email */}
            <div className="form-group">
+						<label for="email" className="group-label f-s6">Email</label>
 						<div className="group-main">
 							<input
 								type="email"
 								name="email"
+								id="email"
+								placeholder='Email'
 								onChange={handleChange}
 								onBlur={handleBlur}
 								value={values.email}
 							/>
 						</div>
-						<div className="group-error">
+						<div className="group-error f-s6">
 							{errors.email && touched.email && errors.email}
 						</div>
 					 </div>
-					 <div className="form-group">
-						<div className="group-main">
-							<input
-							type="password"
-							name="password"
-							onChange={handleChange}
-							onBlur={handleBlur}
-							value={values.password}
-						/>
-						</div>
-						<div className="group-error">
-							{errors.password && touched.password && errors.password}
-						</div>
-					 </div>
-           
            
            <button className='myButton big transparent' type="submit" disabled={isSubmitting}>
              Submit
@@ -83,7 +118,6 @@ const Form = () => {
          </form>
        )}
      </Formik>
-		</div>
 	)
 }
 
