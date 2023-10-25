@@ -1,7 +1,11 @@
 .OrderSummary {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+	display: flex;
+	flex-wrap: wrap;
 	gap: 32px;
+
+	> * {
+		flex: 1 1 400px;
+	}
 
 	&.empty {
 		grid-template-columns: 1fr;

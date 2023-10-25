@@ -2,38 +2,40 @@ import s from './Form.module.scss';
 import { Formik } from 'formik';
 
 const Form = () => {
+	var tomorrow = new Date(new Date().getTime() + (24 * 60 * 60 * 1000)).toLocaleString().split(',')[0].split('.').reverse().join('-');
+	
 	return (
 		<Formik
-       initialValues = {{ email: '', firstName: '', lastName: '' }}
+      	initialValues = {{ email: '', firstName: '', lastName: '', date: tomorrow }}
 
-       validate={values => {
-         const errors = {};
+      	validate={values => {
+        	const errors = {};
 
-				if (!values.firstName) {
-					errors.firstName = 'Required';
-				} else if (
-					!/^[A-Z][a-z]{2,}$/i.test(values.firstName)
-				) {
-					errors.firstName = 'Invalid first name';
-				}
+					if (!values.firstName) {
+						errors.firstName = 'Required';
+					} else if (!/^[A-Z][a-z]{2,}$/i.test(values.firstName)) {
+						errors.firstName = 'Invalid first name';
+					}
 
-				if (!values.lastName) {
-					errors.lastName = 'Required';
-				} else if (
-					!/^[A-Z][a-z]{2,}$/i.test(values.lastName)
-				) {
-					errors.lastName = 'Invalid last name';
-				}
+					if (!values.lastName) {
+						errors.lastName = 'Required';
+					} else if (!/^[A-Z][a-z]{1,}$/i.test(values.lastName)) {
+						errors.lastName = 'Invalid last name';
+					}
 
-         if (!values.email) {
-           errors.email = 'Required';
-         } else if (
-           !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-         ) {
-           errors.email = 'Invalid email address';
-         }
+					if (!values.email) {
+						errors.email = 'Required';
+					} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
+						errors.email = 'Invalid email address';
+					}
 
-         return errors;
+					if (!values.date) {
+						errors.date = 'Required';
+					} else if (values.date < tomorrow) {
+						errors.date = 'Invalid date';
+					}
+
+         	return errors;
        }}
 
        onSubmit={(values, { setSubmitting }) => {
@@ -56,7 +58,7 @@ const Form = () => {
          <form className={s.Form} onSubmit={handleSubmit}>
 
 					{/* firstName */}
-					<div className="form-group">
+					<div className={`form-group ${!(errors.firstName && touched.firstName && errors.firstName) && values.firstName ? 'success' : ''}`}>
 						<label for="firstName" className="group-label f-s6">First Name</label>
 						<div className="group-main">
 							<input
@@ -75,7 +77,7 @@ const Form = () => {
 					 </div>
 
 					 {/* lastName */}
-					<div className="form-group">
+					<div className={`form-group ${!(errors.lastName && touched.lastName && errors.lastName) && values.lastName ? 'success' : ''}`}>
 						<label for="lastName" className="group-label f-s6">Last Name</label>
 						<div className="group-main">
 							<input
@@ -94,7 +96,7 @@ const Form = () => {
 					 </div>
 
 					{/* email */}
-           <div className="form-group">
+           <div className={`form-group ${!(errors.email && touched.email && errors.email) && values.email ? 'success' : ''}`}>
 						<label for="email" className="group-label f-s6">Email</label>
 						<div className="group-main">
 							<input
@@ -111,10 +113,31 @@ const Form = () => {
 							{errors.email && touched.email && errors.email}
 						</div>
 					 </div>
+
+					 {/* date */}
+           <div className={`form-group ${!(errors.date && touched.date && errors.date) &&values.date ? 'success' : ''}`}>
+						<label for="date" className="group-label f-s6">Date of receiving</label>
+						<div className="group-main">
+							<input
+								type="date"
+								name="date"
+								id="date"
+								placeholder='Date'
+								onChange={handleChange}
+								onBlur={handleBlur}
+								value={values.date}
+							/>
+						</div>
+						<div className="group-error f-s6">
+							{errors.date && touched.date && errors.date}
+						</div>
+					 </div>
            
-           <button className='myButton big transparent' type="submit" disabled={isSubmitting}>
-             Submit
-           </button>
+           <div className="form-group submit">
+						<button className={`myButton big transparent ${Object.values(values).every(value => value !== '') && !Object.keys(errors).length ? '' : 'disabled'}`} type="submit" disabled={isSubmitting}>
+							Submit
+						</button>
+					 </div>
          </form>
        )}
      </Formik>

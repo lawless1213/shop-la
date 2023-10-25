@@ -1,12 +1,10 @@
 .Form {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+	display: flex;
+	flex-wrap: wrap;
 	height: fit-content;
 	gap: 10px 20px;
 
-	button {
-		justify-self: center;
-		grid-column-start: 1;
-		grid-column-end: -1;
+	> * {
+		flex: 1 1 200px;
 	}
 }

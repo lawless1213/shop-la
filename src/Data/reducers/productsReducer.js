@@ -23,7 +23,6 @@ const productsSlice = createSlice({
 			return {...state, total: action.payload}
 		},
 		setLoadState(state, action){
-			console.log(action.payload);
 			return {...state, loadState: action.payload}
 		},
 	}

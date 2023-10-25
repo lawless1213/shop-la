@@ -8,14 +8,14 @@ const OrderSummary = () => {
 
 	return (
 		<div className={`${s.OrderSummary} ${products.length ? '' : s.empty}`}>
+			<Order/>
+			
 			{
 				products.length ?
 					<Form/>
 				:
 					''
 			}
-			<Order/>
-			
 		</div>
 	)
 }

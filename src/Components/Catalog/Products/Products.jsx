@@ -30,16 +30,12 @@ const Products = () => {
 		.then(res => {
 			setLoaded(false);
 			dispatch(setLoadState(false));
-			console.log(loadState);
-
 			dispatch(setProducts(res.data.products));
 			dispatch(setTotal(res.data.total));
 			setLoaded(true);
 			dispatch(setLoadState(true));
-
-			console.log(loadState);
 		});
-	}, [category, search, loadState])
+	}, [dispatch, uri])
 
 	const LoadMoreHandler = () => {
 		getApiData(`${uri}&skip=${products.length}`)
