@@ -26,7 +26,7 @@ const Header = () => {
 		.then(res => {
 			dispatch(setCategories(res.data));
 		});
-	}, [])
+	}, [dispatch])
 
 	const countProductsHandler = () => {
 		let counter = 0;

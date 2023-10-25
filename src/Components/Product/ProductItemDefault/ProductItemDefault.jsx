@@ -1,10 +1,12 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import s from './ProductItemDefault.module.scss';
-import { addToCart } from '../../../data/reducers/cartReducer';
-import { useDispatch } from 'react-redux';
+import { addToCart, removeFromCart } from '../../../data/reducers/cartReducer';
+import { useDispatch, useSelector } from 'react-redux';
 import ReactStars from "react-rating-stars-component";
 
 const ProductItemDefault = (props) => {
+	let products = useSelector(state => state.cart.products);
+
 	let navigate = useNavigate();
 	let dispatch = useDispatch();
 
@@ -14,6 +16,10 @@ const ProductItemDefault = (props) => {
 
 	const AddToCartHandler = () => {
 		dispatch(addToCart(props.product));
+	}
+
+	const removeFromCartHandler = () => {
+		dispatch(removeFromCart(props.product.id));
 	}
 
 	const CreateDiscountPrice = () => {
@@ -46,9 +52,25 @@ const ProductItemDefault = (props) => {
 			<div className={s.actions}>
 				<div className={s.priceBlock}>
 					<div className={`${s.price} f-s4`}>{props.product.price}USD</div>
-					<div className={`${s.oldPrice} f-s6`}>{CreateDiscountPrice()}</div>
+					<div className={`${s.oldPrice} f-s6`}>{CreateDiscountPrice()}USD</div>
 				</div>
-				<button className='myButton small' onClick={AddToCartHandler}>Buy now</button>
+				{
+					products.find(el => el.id === props.product.id) ?
+					<div className={s.actionsBtn}>
+						<Link className='myLink dark' to='/cart'>
+							<span className="icon fill material-symbols-outlined">shopping_cart</span>
+						</Link>
+						<button className='myLink dark'>
+							<span className="icon material-symbols-outlined" onClick={removeFromCartHandler} style={{color:"red"}}>close</span>
+						</button>
+					</div>
+					:
+					<div className={s.actionsBtn}>
+						<button className='myLink dark'>
+							<span className="icon material-symbols-outlined" onClick={AddToCartHandler}>add_shopping_cart</span>
+						</button>
+					</div>
+				}
 			</div>
 		</div>
 	)
