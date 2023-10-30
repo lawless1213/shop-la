@@ -8,7 +8,7 @@ import store from './data/store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename='/shop-la'>
     <Provider store={store}>
       <App/>
     </Provider>
