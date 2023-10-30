@@ -3,7 +3,7 @@ import s from "./ProductPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import getApiData from "../../../data/api";
-import { addToCart, incrementCount, decrementCount } from '../../../data/reducers/cartReducer';
+import { addToCart, removeFromCart, incrementCount, decrementCount } from '../../../data/reducers/cartReducer';
 import ReactStars from "react-rating-stars-component";
 import Preloader from "../../UI/Preloader/Preloader";	
 
@@ -33,6 +33,10 @@ const ProductPage = () => {
 
 	const AddToCartHandler = () => {
 		dispatch(addToCart(product));
+	}
+
+	const removeFromCartHandler = () => {
+		dispatch(removeFromCart(product.id));
 	}
 
 	const incrementCountHandler = () => {
@@ -82,20 +86,17 @@ const ProductPage = () => {
 							</div>
 							{
 								thisProductInCart ?
-									<div className={s.Counter}>
-										<button className={`myButton mini transparent ${thisProductInCart.count === 1 ? 'disabled' : ''}`} onClick={decrementCountHandler}>-</button>
-										<span className={`${s.Count} f-s5`}>{thisProductInCart.count}</span>
-										<button className='myButton mini transparent' onClick={incrementCountHandler}>+</button>
-									</div>
+								<div className={s.Counter}>
+									<button className="myButton mini transparent" onClick={thisProductInCart.count > 1 ? decrementCountHandler : removeFromCartHandler}>-</button>
+									<span className={`${s.Count} f-s5`}>{thisProductInCart.count}</span>
+									<button className='myButton mini transparent' onClick={incrementCountHandler}>+</button>
+								</div>
 								:
-									<div className={`${s.Counter} disabled`}>
-										<button className='myButton mini transparent disabled'>-</button>
-										<span className={`${s.Count} f-s5`}>0</span>
-										<button className='myButton mini transparent disabled'>+</button>
-									</div>
-
+								<button className='myLink dark'>
+									<span className="icon material-symbols-outlined" onClick={AddToCartHandler}>add_shopping_cart</span>
+								</button>
 							}
-							<button className='myButton small' onClick={AddToCartHandler}>Buy now</button>
+							
 						</div>
 					</div>
 				</div>

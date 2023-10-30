@@ -79,7 +79,7 @@ const ProductItemCart = (props) => {
 						<div className={`${s.oldPrice} f-s6`}>{CreateDiscountPrice()}USD</div>
 					</div>
 					<div className={s.Counter}>
-						<button className={`myButton mini transparent ${props.product.count === 1 ? 'disabled' : ''}`} onClick={decrementCountHandler}>-</button>
+						<button className="myButton mini transparent" onClick={props.product.count > 1 ? decrementCountHandler : removeFromCartHandler}>-</button>
 						<span className={`${s.Count} f-s5`}>{props.product.count}</span>
 						<button className='myButton mini transparent' onClick={incrementCountHandler}>+</button>
 					</div>
