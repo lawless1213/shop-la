@@ -1,0 +1,22 @@
+Footer {
+	padding: 48px 0;
+	display: grid;
+	gap: 48px;
+
+	.tags {
+		display: grid;
+		gap: 16px;
+
+		.tagList {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 16px;
+		}
+	}
+
+	.Copyright {
+		display: flex;
+		align-items: baseline;
+		gap: 6px;
+	}
+}

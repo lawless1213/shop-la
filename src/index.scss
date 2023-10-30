@@ -253,10 +253,24 @@ $fonts: (
 .myTag {
 	display: inline-flex;
 	padding: 0 8px;
+	text-decoration: none;
+	text-transform: capitalize;
 	color: var(--color-secondary);
 	background-color: var(--color-secondary-e);
 	border-radius: 12px;
 	gap: 4px;
+	transition: 0.2s;
+
+	&.dark {
+		padding: 4px 10px;
+		font-weight: 600;
+		color: var(--color-primary);
+		background-color: var(--color-primary-f);
+
+		&:hover {
+			background-color: var(--color-secondary-e);
+		}
+	}
 }
 //------------
 
