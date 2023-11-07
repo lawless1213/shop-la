@@ -8,7 +8,6 @@ import Main from './Components/Main/Main';
 import Cart from './Components/Cart/Cart';
 import Blog from './Components/Blog/Blog';
 import AboutUs from './Components/AboutUs/AboutUs';
-import Careers from './Components/Careers/Careers';
 import Catalog from './Components/Catalog/Catalog';
 import ProductPage from './Components/Product/ProductPage/ProductPage';
 import PostPage from './Components/Blog/PostPage/PostPage';
@@ -16,25 +15,28 @@ import OrderSummary from './Components/Cart/OrderSummary/OrderSummary';
 
 
 function App() {
-	let theme = useSelector(state => state.settings.themeMode);
+	let themeMode = useSelector(state => state.settings.themeMode);
+	let asideState = useSelector(state => state.settings.aside);
 
   return (
-    <div className='App' data-theme={theme}>
-      <Header/>
-      <Routes>
-        <Route path='/' element={<Main/>}></Route>
-        <Route path="/cart" element={<Cart/>}/>
-        <Route path="/cart/order-summary" element={<OrderSummary/>}/>
-        <Route path="/blog" element={<Blog/>}/>
-        <Route path="/about" element={<AboutUs/>}/>
-        {/* <Route path="/careers" element={<Careers/>}/> */}
-        <Route path="/products/*" element={<Catalog/>}/>
-        <Route path="/products/categories/:category" element={<Catalog/>}/>
-        <Route path="/products/search/:search" element={<Catalog/>}/>
-        <Route path='/product/:productId' element={<ProductPage/>}></Route>
-        <Route path='/blog/post/:postId' element={<PostPage/>}></Route>
-      </Routes>
-      <Footer/>
+    <div className={`App${asideState ? ' aside_open' : ''}`} data-theme={themeMode}>
+      <div className='container'>
+        <Header/>
+        <Routes>
+          <Route path='/' element={<Main/>}></Route>
+          <Route path="/cart" element={<Cart/>}/>
+          <Route path="/cart/order-summary" element={<OrderSummary/>}/>
+          <Route path="/blog" element={<Blog/>}/>
+          <Route path="/about" element={<AboutUs/>}/>
+          {/* <Route path="/careers" element={<Careers/>}/> */}
+          <Route path="/products/*" element={<Catalog/>}/>
+          <Route path="/products/categories/:category" element={<Catalog/>}/>
+          <Route path="/products/search/:search" element={<Catalog/>}/>
+          <Route path='/product/:productId' element={<ProductPage/>}></Route>
+          <Route path='/blog/post/:postId' element={<PostPage/>}></Route>
+        </Routes>
+        <Footer/>
+      </div>
     </div>
   );
 }

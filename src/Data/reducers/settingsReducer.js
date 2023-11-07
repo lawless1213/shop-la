@@ -6,14 +6,13 @@ const settingsSlice = createSlice({
 		themeMode: JSON.parse(localStorage.getItem("mode")) || "light",
 		asideMenu: false,
 		asideFilter: false,
+		aside: false,
 	},
 	reducers: {
 		toggleAsideMenuState(state, action){
-			document.body.classList.toggle("aside_open");
 			return {...state, asideMenu: !state.asideMenu, aside: !state.aside}
 		},
 		toggleAsideFilterState(state, action){
-			document.body.classList.toggle("aside_open");
 			return {...state, asideFilter: !state.asideFilter, aside: !state.aside}
 		},
 		toggleTheme(state, action) {
