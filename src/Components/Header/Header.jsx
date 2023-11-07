@@ -104,6 +104,7 @@ const Header = () => {
 					<Route path='/blog/*' element={<Link className={`${s.headerBtn} myButton transparent big`} to='/products'>Go to catalog</Link>}/>
 				</Routes>
 				<div className={s.userPanel}>
+					<TogglerTheme/>
 					<Link className='myLink dark' to='/cart'>
 						<span className="icon material-symbols-outlined">shopping_cart</span>
 						{

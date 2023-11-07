@@ -41,7 +41,7 @@
 
 [data-theme='dark'] {
 	--g-color-background: #21242d;
-	--g-color-panel: var(--color-primary-b);
+	--g-color-panel: var(--g-color-fill-dark);
 	--g-color-fill: var(--g-color-fill-light);
 	--g-color-fill-active: var(--color-primary-c);
 }
