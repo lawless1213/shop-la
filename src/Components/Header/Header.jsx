@@ -10,6 +10,7 @@ import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
 import { toggleAsideMenuState } from '../../data/reducers/settingsReducer';
 import AsideMenu from '../Asides/AsideMenu';
+import TogglerTheme from '../Theme/Toggler';
 
 const Header = () => {
 	let categories = useSelector(state => state.products.categories);
@@ -63,6 +64,7 @@ const Header = () => {
 					<Link  className='myLink dark' to={"mailto:" + data.contacts.mail}>{data.contacts.mail}</Link>
 				</div>
 				<div className={s.links}>
+					<TogglerTheme/>
 					<NavLink className='myLink' to='/blog'>Blog</NavLink>
 					<NavLink className='myLink' to='/about'>About Us</NavLink>
 				</div>

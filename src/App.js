@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import Header from './Components/Header/Header';
@@ -14,8 +16,10 @@ import OrderSummary from './Components/Cart/OrderSummary/OrderSummary';
 
 
 function App() {
+	let theme = useSelector(state => state.settings.themeMode);
+
   return (
-    <div className='App'>
+    <div className='App' data-theme={theme}>
       <Header/>
       <Routes>
         <Route path='/' element={<Main/>}></Route>
