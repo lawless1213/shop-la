@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleTheme } from '../../data/reducers/settingsReducer';
 
-const TogglerTheme = () => {
+const TogglerTheme = (props) => {
 	let dispatch = useDispatch();
 	
 	let themeMode = useSelector(state => state.settings.themeMode);
@@ -11,7 +11,7 @@ const TogglerTheme = () => {
 	}
 
 	return (
-		<button className={`togglerTheme ${themeMode}mode`} onClick={toggleThemeHandler}>
+		<button className={`togglerTheme ${props.class} ${themeMode}mode`} onClick={toggleThemeHandler}>
 			<div class='indicator'>
 				<span className='icon material-symbols-outlined'>{ themeMode === 'dark' ? 'dark_mode' : 'light_mode'}</span>
 			</div>

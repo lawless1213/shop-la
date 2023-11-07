@@ -12,7 +12,7 @@ const ProductSection = ({category}) => {
 	let [products, setProducts] = useState([]);
 	let [loaded, setLoaded] = useState(false);
 
-	let limitProducts = 4; 
+	let limitProducts = 5; 
 	let uri = `products/category/${category}?limit=${limitProducts}`;
 	let btnLink = `/products/categories/${category}`;
 
@@ -37,9 +37,9 @@ const ProductSection = ({category}) => {
 				{
 					loaded ?
 					<Swiper
-						className={s.Products}
+						className={`${s.Products} no_container padding_side`}
 						slidesPerView={'auto'}
-						spaceBetween={32}
+						spaceBetween={30}
 					>
 						{
 							products.map(product => <SwiperSlide key={product.id}><ProductItemDefault product={product}/></SwiperSlide>)

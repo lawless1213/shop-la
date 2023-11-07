@@ -11,7 +11,7 @@ const Banner = () => {
 
 	return (
 		<Swiper
-		className={s.Banner}
+		className={`${s.Banner} no_container`}
 		spaceBetween={0}
 		loop={true}
 		modules={[Pagination]}

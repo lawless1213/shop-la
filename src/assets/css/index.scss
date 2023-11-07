@@ -26,6 +26,11 @@
 	//Aside settings
 	--aside-width: 270px;
 	//--------------------
+
+	//Scrollbar settings
+	--scrollbar-width: 4px;
+	//--------------------
+
 }
 //------------
 
@@ -255,6 +260,7 @@ $fonts: (
 		border: 1px solid var(--color-primary-d);
 		border-radius: 12px;
 		cursor: pointer;
+		transition: none;
 
 		.dropdown_placeholder {
 			text-transform: capitalize;
@@ -308,7 +314,7 @@ $fonts: (
 //scrollbar
 * {
 	&::-webkit-scrollbar {
-    width: 4px;
+    width: var(--scrollbar-width);
     height: 100%;
     background-color: var(--g-color-panel);
     border-radius: 6px;

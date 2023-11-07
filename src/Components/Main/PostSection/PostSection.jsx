@@ -11,7 +11,7 @@ const PostSection = ({category}) => {
 	let [posts, setPosts] = useState([]);
 	let [loaded, setLoaded] = useState(false);
 
-	let limitProducts = 4; 
+	let limitProducts = 5; 
 	let uri = `posts?limit=${limitProducts}`;
 	let btnLink = `/blog`;
 
@@ -36,9 +36,9 @@ const PostSection = ({category}) => {
 				{
 					loaded ?
 					<Swiper
-						className={s.Posts}
+						className={`${s.Posts} no_container padding_side`}
 						slidesPerView={'auto'}
-						spaceBetween={32}
+						spaceBetween={30}
 					>
 						{
 							posts.map(post => <SwiperSlide key={post.id}><PostPreview post={post}/></SwiperSlide>)
