@@ -1,0 +1,46 @@
+.modal {
+	--modal-padding: 20px;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	display: grid;
+	grid-template-areas: 'modal';
+	z-index: 10;
+
+	.overlay {
+		grid-area: modal;
+		width: 100%;
+		height: 100%;
+		background: var(--overlay-color);
+	}
+
+	.popup {
+		grid-area: modal;
+		align-self: center;
+		justify-self: center;
+		min-height: 200px;
+		min-width: 500px;
+		background: var(--g-color-panel);
+
+		.header {
+			display: flex;
+			gap: 10px;
+			align-items: center;
+			justify-content: space-between;
+			border-bottom: 1px solid var(--g-color-fill-active);
+			padding: var(--modal-padding);
+
+			.close_modal {
+				.icon {
+					font-size: 32px;
+				}
+			}
+		}
+
+		.content {
+			padding: var(--modal-padding);
+		}
+	}
+}

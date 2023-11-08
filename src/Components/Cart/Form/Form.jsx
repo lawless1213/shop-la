@@ -11,7 +11,7 @@ const Form = () => {
 	
 	const orderHandler = (order) => {
 		dispatch(addOrder(order));
-		dispatch(openModal('order'));
+		dispatch(openModal('success-order'));
 	}
 
 	return (
