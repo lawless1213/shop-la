@@ -5,6 +5,7 @@ const cartSlice = createSlice({
 	initialState: {
 		products: [],
 		wishlist: [],
+		orders: [],
 	},
 	reducers: {
 		addToCart(state, action) {
@@ -23,6 +24,13 @@ const cartSlice = createSlice({
 				product.count++;
 			}
 		},
+		removeFromCart(state, action){
+			let id = action.payload;
+			return {...state, products: [...state.products.filter(pr => pr.id !== id)]}
+		},
+		removeAllCart(state){
+			return {...state, products: []}
+		},
 		incrementCount: (state, action) => {
       let id = action.payload;
 			let product = state.products.find(pr => pr.id === id);
@@ -33,13 +41,18 @@ const cartSlice = createSlice({
 			let product = state.products.find(e => e.id === id);
       product.count > 1 ? product.count-- : product.count = 1;
     },
-		removeFromCart(state, action){
-			let id = action.payload;
-			return {...state, products: [...state.products.filter(pr => pr.id !== id)]}
+		addOrder: (state, action) => {
+			let order = {
+				firstName: action.payload.firstName,
+				lastName: action.payload.lastName,
+				email: action.payload.email,
+				date: action.payload.date
+			}
+
+			return {...state, orders: [...state.orders, order]}
 		},
-		removeAllCart(state){
-			return {...state, products: []}
-		},
+
+
 		toggleWishProduct(state, action) {
 			let product = action.payload;
 			let id = product.id;
@@ -51,8 +64,9 @@ const cartSlice = createSlice({
 				return {...state, wishlist: [...state.wishlist.filter(p => p.id !== id)]}
 			}
 		},
+		
 	}
 })
 
-export const {addToCart, incrementCount, decrementCount, removeFromCart, removeAllCart, toggleWishProduct} = cartSlice.actions;
+export const {addToCart, incrementCount, decrementCount, removeFromCart, removeAllCart, toggleWishProduct, addOrder} = cartSlice.actions;
 export default cartSlice.reducer;

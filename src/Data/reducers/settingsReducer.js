@@ -7,6 +7,8 @@ const settingsSlice = createSlice({
 		asideMenu: false,
 		asideFilter: false,
 		aside: false,
+		modal: false,
+		modalType: '',
 	},
 	reducers: {
 		toggleAsideMenuState(state, action){
@@ -19,9 +21,15 @@ const settingsSlice = createSlice({
 			let newTheme = state.themeMode === "light" ? "dark" : "light";
 			localStorage.setItem("mode", JSON.stringify(newTheme));
 			return {...state, themeMode: newTheme}
+		},
+		openModal(state, action) {
+			return {...state, modalType: action.payload, modal: true}
+		},
+		closeModal(state, action) {
+			return {...state, modalType: '', modal: false}
 		}
 	}
 })
 
-export const {toggleAsideMenuState, toggleAsideFilterState, toggleTheme} = settingsSlice.actions;
+export const {toggleAsideMenuState, toggleAsideFilterState, toggleTheme, openModal, closeModal} = settingsSlice.actions;
 export default settingsSlice.reducer;

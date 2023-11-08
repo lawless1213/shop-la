@@ -12,11 +12,12 @@ import Catalog from './Components/Catalog/Catalog';
 import ProductPage from './Components/Product/ProductPage/ProductPage';
 import PostPage from './Components/Blog/PostPage/PostPage';
 import OrderSummary from './Components/Cart/OrderSummary/OrderSummary';
-
+import Modal from './Components/Modal/Modal';
 
 function App() {
 	let themeMode = useSelector(state => state.settings.themeMode);
 	let asideState = useSelector(state => state.settings.aside);
+	let modalState = useSelector(state => state.settings.modal);
 
   return (
     <div className={`App${asideState ? ' aside_open' : ''}`} data-theme={themeMode}>
@@ -36,6 +37,12 @@ function App() {
           <Route path='/blog/post/:postId' element={<PostPage/>}></Route>
         </Routes>
         <Footer/>
+        { modalState ? 
+          <Modal/>
+         : 
+         ''
+        }
+        
       </div>
     </div>
   );

@@ -1,9 +1,19 @@
+import { addOrder } from '../../../data/reducers/cartReducer';
 import s from './Form.module.scss';
 import { Formik } from 'formik';
+import { useDispatch } from 'react-redux';
+import { openModal } from '../../../data/reducers/settingsReducer';
 
 const Form = () => {
+	let dispatch = useDispatch();
+
 	var tomorrow = new Date(new Date().getTime() + (24 * 60 * 60 * 1000)).toLocaleString().split(',')[0].split('.').reverse().join('-');
 	
+	const orderHandler = (order) => {
+		dispatch(addOrder(order));
+		dispatch(openModal('order'));
+	}
+
 	return (
 		<Formik
       	initialValues = {{ email: '', firstName: '', lastName: '', date: tomorrow }}
@@ -40,8 +50,9 @@ const Form = () => {
 
        onSubmit={(values, { setSubmitting }) => {
          setTimeout(() => {
-           alert(JSON.stringify(values, null, 2));
+					 orderHandler(values);
            setSubmitting(false);
+
          }, 400);
        }}
      >

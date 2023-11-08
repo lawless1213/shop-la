@@ -15,8 +15,8 @@ import TogglerTheme from '../Theme/Toggler';
 const Header = () => {
 	let categories = useSelector(state => state.products.categories);
 	let products = useSelector(state => state.cart.products);
-	let navigate = useNavigate();
 	let dispatch = useDispatch();
+	let navigate = useNavigate();
 
 	const menuHandler = () => {
 		dispatch(toggleAsideMenuState())
